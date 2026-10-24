@@ -1,7 +1,28 @@
 doctype html
 html
   head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    //- Navbar is hidden on Login and Register (controller sends hideNav: true)
+    if !hideNav
+      nav.app-navbar
+        .app-container.app-navbar-inner
+          a.app-brand(href='/')
+            span.app-logo
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            span ActivityLog
+          a.app-logout(href='/login')
+            span.app-logout-text Logout
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+
     block content
+
+    if !hideNav
+      footer.app-footer
+        .app-container
+          small &copy; Bohdan Byrdin 2026 &middot; ActivityLog

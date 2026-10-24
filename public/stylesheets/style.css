@@ -1,8 +1,407 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* ===== ActivityLog: Login & Registration pages ===== */
+/* Works on its own - does not need Bootstrap */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+body {
+  margin: 0;
+  background: #f3f4f6;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #111827;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 30px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Logo + name */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.auth-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: #4f46e5;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-brand-name {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 22px;
+  color: #4b5563;
+  margin: 10px 0 26px;
+}
+
+/* Form */
+.auth-card form {
+  margin: 0;
+}
+
+.auth-card .form-group {
+  margin-bottom: 18px;
+}
+
+.auth-card label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.auth-card .form-control {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.auth-card .form-control:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.auth-card .form-control::placeholder {
+  color: #9ca3af;
+}
+
+/* Eye icon inside the password field */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .form-control {
+  padding-right: 42px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 42px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password:hover,
+.toggle-password.is-visible {
+  color: #4f46e5;
+}
+
+/* Button */
+.btn-auth {
+  display: block;
+  width: 100%;
+  height: 42px;
+  margin-top: 6px;
+  background: #4f46e5;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-auth:hover,
+.btn-auth:focus {
+  background: #4338ca;
+}
+
+/* "Already have an account? Login" */
+.auth-footer {
+  text-align: center;
+  margin: 22px 0 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.auth-footer a {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Mobile: no card, form fills the screen (as in the mobile design) */
+@media (max-width: 576px) {
+  .auth-page {
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+
+  .auth-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0 4px;
+  }
+
+  .auth-subtitle {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+
+  .auth-card .form-control,
+  .toggle-password {
+    height: 42px;
+  }
+
+  .auth-card .form-control {
+    border-radius: 8px;
+  }
+}
+
+/* ===== Navbar, footer and Dashboard page ===== */
+.app-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.app-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-navbar-inner {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #111827;
+  text-decoration: none;
+}
+
+.app-brand:hover,
+.app-brand:focus {
+  color: #111827;
+  text-decoration: none;
+}
+
+.app-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: #4f46e5;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.app-logout:hover,
+.app-logout:focus {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.dashboard {
+  padding-top: 32px;
+  padding-bottom: 40px;
+}
+
+.dashboard-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 24px;
+}
+
+.section-title {
+  display: none; /* shown only on phone */
+}
+
+/* Table (desktop) */
+.activity-table-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.activity-table th {
+  background: #f9fafb;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.activity-table td {
+  padding: 16px 24px;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.activity-table tr:last-child td {
+  border-bottom: none;
+}
+
+.activity-table th:nth-child(1),
+.activity-table td:nth-child(1) { width: 180px; }
+.activity-table th:nth-child(2),
+.activity-table td:nth-child(2) { width: 140px; }
+.activity-table th:nth-child(3),
+.activity-table td:nth-child(3) { width: 140px; }
+
+.activity-type {
+  font-weight: 600;
+  color: #111827 !important;
+}
+
+/* Cards (phone) */
+.activity-cards {
+  display: none;
+}
+
+.activity-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.activity-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.activity-date {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.activity-duration {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.activity-notes {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.app-footer {
+  padding: 24px 0;
+  color: #9ca3af;
+}
+
+@media (max-width: 576px) {
+  .app-container {
+    padding: 0 16px;
+  }
+
+  .app-navbar-inner {
+    height: 56px;
+  }
+
+  .app-logout-text {
+    display: none; /* only the icon on phone */
+  }
+
+  .dashboard {
+    padding-top: 20px;
+  }
+
+  .dashboard-title {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    margin: 0 0 12px;
+  }
+
+  .activity-table-card {
+    display: none;
+  }
+
+  .activity-cards {
+    display: block;
+  }
 }

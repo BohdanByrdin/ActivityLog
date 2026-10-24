@@ -1,0 +1,27 @@
+extends layout
+include _includes/sharedHTMLfunctions
+
+block content
+  main.app-container.dashboard
+    h1.dashboard-title= pageHeader.title
+    h2.section-title= pageHeader.strapline
+
+    //- Desktop / tablet: table
+    .activity-table-card
+      table.activity-table
+        thead
+          tr
+            each column in columns
+              th= column
+        tbody
+          each activity in activities
+            tr
+              td.activity-type= activity.type
+              td= activity.date
+              td #{activity.duration} mins
+              td= activity.notes
+
+    //- Phone: cards
+    .activity-cards
+      each activity in activities
+        +activityCard(activity)

@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const ctrlMain = require('../controllers/main');
+const ctrlActivities = require('../controllers/activities');
+const ctrlAuth = require('../controllers/auth');
 
-/* GET home page. */
-router.get('/', ctrlMain.index);
+/* Activities pages */
+router.get('/', ctrlActivities.dashboard);
+
+/* Auth pages */
+router.get('/register', ctrlAuth.register);
+router.post('/register', ctrlAuth.doRegister);
+router.get('/login', ctrlAuth.login);
+router.post('/login', ctrlAuth.doLogin);
 
 module.exports = router;

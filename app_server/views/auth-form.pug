@@ -1,0 +1,24 @@
+extends layout
+include _includes/sharedHTMLfunctions
+
+block content
+  .auth-page
+    .auth-card
+      .auth-brand
+        span.auth-logo
+          +logoIcon(20)
+        span.auth-brand-name= pageHeader.title
+      p.auth-subtitle= pageHeader.strapline
+
+      form(action=form.action, method='post')
+        each field in form.fields
+          +formField(field)
+
+        button.btn-auth(type='submit')= form.button
+
+      p.auth-footer
+        | #{footerLink.text}
+        |
+        a(href=footerLink.href)= footerLink.linkText
+
+  script(src='/javascripts/auth.js')

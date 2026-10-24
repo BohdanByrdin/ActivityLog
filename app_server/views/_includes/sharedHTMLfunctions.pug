@@ -1,0 +1,28 @@
+//- Reusable Pug mixins for ActivityLog
+
+//- Logo icon (heartbeat line)
+mixin logoIcon(size)
+  <svg width="#{size}" height="#{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+
+//- One form field: label + input (password fields get the eye button)
+mixin formField(field)
+  .form-group
+    label(for=field.id)= field.label
+    if field.type === 'password'
+      .password-wrap
+        input.form-control(id=field.id, name=field.id, type='password', placeholder=field.placeholder, required)
+        button.toggle-password(type='button', data-target=field.id, aria-label='Show password')
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    else
+      input.form-control(id=field.id, name=field.id, type=field.type, placeholder=field.placeholder, required)
+
+//- One activity as a card (phone view)
+mixin activityCard(activity)
+  .activity-card
+    .activity-card-top
+      span.activity-type= activity.type
+      span.activity-date= activity.date
+    .activity-duration
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      span #{activity.duration} mins
+    p.activity-notes= activity.notes
