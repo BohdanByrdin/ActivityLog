@@ -59,7 +59,7 @@ const doRegister = function (req, res) {
 /* POST login form (temporary: real checking comes later with Passport)
    Data the form sends: { email, password } */
 const doLogin = function (req, res) {
-  res.redirect('/');
+  res.redirect('/dashboard');
 };
 
 module.exports = {
