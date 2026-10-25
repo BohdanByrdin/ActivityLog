@@ -1,7 +1,6 @@
-cat > app_server/models/db.js <<'EOF'
 const mongoose = require('mongoose');
 
-const dbURI = "mongodb+srv://longnon1983_db_user:18Bodya2007@cluster0.dxxokck.mongodb.net/";
+const dbURI = "mongodb+srv://longnon1983_db_user:18Bodya2007@cluster0.dxxokck.mongodb.net/ActivityLog?retryWrites=true&w=majority";
 
 try {
   mongoose.connect(dbURI).then(
@@ -14,4 +13,3 @@ catch (e) {
 }
 
 require('./users');
-EOF
